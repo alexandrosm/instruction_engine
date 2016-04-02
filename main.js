@@ -176,6 +176,15 @@ externalBootDevice.getStep("initialize > boot").content = "Power your device up 
 //TODO: Add ability for an inheriting instruction set to replace parent text variables with a specific value.
 //For instance SDCardDevice should be able to replace {{Application.deviceType.installMedium}} with "SD card".
 
+//TODO: Add the notion of a "feature". Features should trigger conditional instructions, but should only be used
+//for minor variations that don't cause combinatorial explosion
+
+//TODO: Consider the notion that the way of identification per device type could be different
+
+//TODO: Consider the notion that device types could have subtypes (like the TS-4900 custom device type)
+
+//TODO: prototype the instructionfile
+
 // for LED devices:
 
 //{
