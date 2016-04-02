@@ -35,9 +35,11 @@ STEP {
 			duration: "1-5 minutes",
 			extras: [{
 				type: "info",
-				content: "- If you're using an ethernet cable, plug it into the device and ensure it leads to an internet-connected socket.\n" +
-				"- If you're using a wifi or 3g dongle, plug it into the usb port.\n" +
-				"- If you're using a device with onboard wifi, there's nothing to do for this step\n",
+				content: [
+					"- If you're using an ethernet cable, plug it into the device and ensure it leads to an internet-connected socket.",
+					"- If you're using a wifi or 3g dongle, plug it into the usb port.",
+					"- If you're using a device with onboard wifi, there's nothing to do for this step"
+				],
 				expand: false
 			}]
 		},
