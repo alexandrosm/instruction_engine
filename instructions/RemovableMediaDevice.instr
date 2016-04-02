@@ -1,0 +1,42 @@
+FROM Device
+
+STEP burn > content : "Burn the Resin OS image to {{Application.deviceType.installMedium}}."
+
+STEP burn ADD STEP {
+	name: "writer",
+	content: "Download and install [Etcher]({{Etcher.downloadUrl[user.OS]}}). ([see all versions]({{Etcher.downloadListUrl}}). You may also use an image writer of your choice.",
+	action: {
+		text: "Download Etcher",
+		target: "{{Etcher.downloadUrl[user.OS]}}"
+	},
+	duration: "2 minutes"
+}
+
+STEP burn ADD STEP {
+	name: "selectFile",
+	content: "Start the writer and select the file {{OS.imageName}} in your download folder."
+}
+
+STEP burn ADD STEP {
+	name: "write",
+	content: "Insert your {{Application.deviceType.installMedium}}, make sure it's selected, and press \"Burn!\".",
+	duration: "4 minutes",
+	extras: [
+		{
+			type: "warning",
+			content: "This will overwrite your {{Application.deviceType.installMedium}}. Please make sure any important data is backed up",
+			expand: true
+		}
+	]
+}
+
+STEP burn ADD STEP {
+	name: "remove",
+	content: "When writing is finished, remove the {{Application.deviceType.installMedium}}",
+	action: {
+		text: "",
+		target: ""
+	},
+	duration: "x minutes"
+}
+

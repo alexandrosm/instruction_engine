@@ -1,0 +1,51 @@
+FROM Scratch
+
+STEP {
+	name: "download",
+	content: "Download the pre-configured Resin OS image.",
+	action: {
+		text: "Download OS",
+		target: "{{image.url}}"
+	},
+	duration: "3 minutes",
+	extras: [{
+		type: "info",
+		content: "The download includes ResinOS Linux [{{OS.base.version}}]({{OS.base.repo}}), the Resin.io Supervisor [{{OS.supervisor.version}}]({{OS.supervisor.repo}}), as well as [configuration file]({{OS.config.url}}) that allows your device to securely authenticate and automatically provision into your application. Read more about the [resin.io provisioning process](provisioning docs link).",
+		expand: true
+	}]
+}
+
+STEP {
+	name: "burn",
+	content: "Burn the Resin OS image to the installation medium or device.",
+	duration: "5 minutes"
+}
+
+STEP {
+	name: "initialize",
+	steps: [
+		{
+			name: "insert medium",
+			content: "Insert the {{Application.device-type.install-medium}} into the {{Application.device-type.name}}",
+			duration: "1-5 minutes"
+		},
+		{
+			name: "ensure connectivity",
+			content: "Ensure the device can connect to your preferred network",
+			duration: "1-5 minutes",
+			extras: [{
+				type: "info",
+				content: "- If you're using an ethernet cable, plug it into the device and ensure it leads to an internet-connected socket.\n" +
+				"- If you're using a wifi or 3g dongle, plug it into the usb port.\n" +
+				"- If you're using a device with onboard wifi, there's nothing to do for this step\n",
+				expand: false
+			}]
+		},
+		{
+			name: "boot",
+			content: "Power the device up and perform the appropriate steps for it to provision",
+			duration: "1-5 minutes",
+			extras: []
+		}
+	]
+ }

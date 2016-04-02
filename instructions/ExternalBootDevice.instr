@@ -1,0 +1,9 @@
+FROM RemovableMediaDevice
+
+STEP burn > remove ADD EXTRA {
+	type: "info",
+	content: "You can write {{Application.deviceType.installMedia}} for as many devices as you want, using the same OS image file download.",
+	expand: true
+}
+
+STEP initialize > boot > content "Power your device up and hang tight. Your device should appear here in a few seconds."
